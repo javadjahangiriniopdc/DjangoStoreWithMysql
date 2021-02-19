@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'orderapp'
-    ,'ckeditor'
+    , 'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -75,11 +75,10 @@ WSGI_APPLICATION = 'store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'store',
-        'USER': 'postgres',
-        'PASSWORD': '@#q1w2e3@#',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'StoreFanni',
+        'USER': 'root',
+        'PASSWORD': '123',
         'PORT': ''
     }
 }
@@ -121,9 +120,16 @@ USE_TZ = True
 
 # CKeditor Seting
 # static file
-STATIC_ROOT = os.path.dirname(os.path.abspath(__file__))
+# STATIC_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-#CDEditor
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+# CDEditor
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+# Media Setting
+MEDIA_URL = 'file/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
