@@ -80,6 +80,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '123',
         'PORT': '',
+        'default-character-set': 'utf8',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES', default_storage_engine =INNODB;"}
     }
 }

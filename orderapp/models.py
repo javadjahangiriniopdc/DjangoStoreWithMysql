@@ -1,8 +1,11 @@
 from datetime import datetime
 
+import django
 from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
+
+from django.utils import timezone
 
 
 def validate_file_extension(value):
@@ -30,7 +33,10 @@ class Product(models.Model):
                              validators=[validate_file_extension])
     price = models.IntegerField(default=0)
     description = models.CharField(max_length=50, null=False, blank=False)
-    create_at = models.DateTimeField(default=datetime.now)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    # create_at = models.DateTimeField(default=timezone.now)
+    # create_at = models.DateTimeField(default=datetime.now)
     promote = models.BooleanField(default=False)
 
     def __str__(self):
@@ -41,9 +47,11 @@ class OrderApp(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
     customer = models.ForeignKey('Customer', on_delete=models.PROTECT)
     product = models.ForeignKey('Product', on_delete=models.PROTECT)
-    create_at = models.DateTimeField(default=datetime.now)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    # create_at = models.DateTimeField(default=timezone.now)
+    # create_at = models.DateTimeField(default=datetime.now)
     description = RichTextField()
-
 
     def __str__(self):
         return self.title
