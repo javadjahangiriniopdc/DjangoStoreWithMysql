@@ -79,7 +79,8 @@ DATABASES = {
         'NAME': 'StoreFanni',
         'USER': 'root',
         'PASSWORD': '123',
-        'PORT': ''
+        'PORT': '',
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES', default_storage_engine =INNODB;"}
     }
 }
 

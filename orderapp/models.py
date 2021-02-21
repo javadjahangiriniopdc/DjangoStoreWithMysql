@@ -15,7 +15,7 @@ def validate_file_extension(value):
 
 
 class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
     avatar = models.FileField(upload_to='files/user_avatar', null=False, blank=False,
                               validators=[validate_file_extension])
     description = models.CharField(max_length=512, null=False, blank=False)
@@ -39,8 +39,8 @@ class Product(models.Model):
 
 class OrderApp(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
-    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    customer = models.ForeignKey('Customer', on_delete=models.PROTECT)
+    product = models.ForeignKey('Product', on_delete=models.PROTECT)
     create_at = models.DateTimeField(default=datetime.now)
     description = RichTextField()
 
