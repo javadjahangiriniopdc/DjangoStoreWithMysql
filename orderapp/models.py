@@ -18,40 +18,52 @@ def validate_file_extension(value):
 
 
 class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
-    avatar = models.FileField(upload_to='files/user_avatar', null=False, blank=False,
+    class Meta:
+        verbose_name = 'مشتری'
+        verbose_name_plural = 'مشتریان'
+
+    user = models.OneToOneField(User, on_delete=models.PROTECT, verbose_name='کاربر')
+    avatar = models.FileField('عکس', upload_to='files/user_avatar', null=False, blank=False,
                               validators=[validate_file_extension])
-    description = models.CharField(max_length=512, null=False, blank=False)
+    description = models.CharField('توضیحات', max_length=512, null=False, blank=False)
 
     def __str__(self):
         return self.user.first_name + '-' + self.user.last_name
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=50, null=False, blank=False)
-    cover = models.FileField(upload_to='files/product_cover', null=False, blank=False,
+    class Meta:
+        verbose_name = 'کالا'
+        verbose_name_plural = 'کالاها'
+
+    title = models.CharField('عنوان', max_length=50, null=False, blank=False)
+    cover = models.FileField('عکس محصول', upload_to='files/product_cover', null=False, blank=False,
                              validators=[validate_file_extension])
-    price = models.IntegerField(default=0)
-    description = models.CharField(max_length=50, null=False, blank=False)
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    price = models.IntegerField('قیمت', default=0)
+    description = models.CharField('توضیحات', max_length=50, null=False, blank=False)
+    create_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
+    update_at = models.DateTimeField('تاریخ ویرایش', auto_now=True)
     # create_at = models.DateTimeField(default=timezone.now)
     # create_at = models.DateTimeField(default=datetime.now)
-    promote = models.BooleanField(default=False)
+    promote = models.BooleanField('تبلیغات', default=False)
 
     def __str__(self):
         return self.title
 
 
 class OrderApp(models.Model):
-    title = models.CharField(max_length=50, null=False, blank=False)
-    customer = models.ForeignKey('Customer', on_delete=models.PROTECT)
-    product = models.ForeignKey('Product', on_delete=models.PROTECT)
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        verbose_name = 'سفارش'
+        verbose_name_plural = 'سفارشات'
+
+    title = models.CharField('عنوان', max_length=50, null=False, blank=False)
+    customer = models.ForeignKey('Customer', on_delete=models.PROTECT,verbose_name='مشتری')
+    product = models.ForeignKey('Product', on_delete=models.PROTECT,verbose_name='کالا')
+    create_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
+    update_at = models.DateTimeField('تاریخ ویرایش', auto_now=True)
     # create_at = models.DateTimeField(default=timezone.now)
     # create_at = models.DateTimeField(default=datetime.now)
-    description = RichTextField()
+    description = RichTextField('توضیحات')
 
     def __str__(self):
         return self.title
