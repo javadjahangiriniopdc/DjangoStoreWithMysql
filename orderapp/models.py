@@ -57,8 +57,11 @@ class OrderApp(models.Model):
         verbose_name_plural = 'سفارشات'
 
     title = models.CharField('عنوان', max_length=50, null=False, blank=False)
-    customer = models.ForeignKey('Customer', on_delete=models.PROTECT,verbose_name='مشتری')
-    product = models.ForeignKey('Product', on_delete=models.PROTECT,verbose_name='کالا')
+    customer = models.ForeignKey('Customer', on_delete=models.PROTECT, verbose_name='مشتری')
+    product = models.ForeignKey('Product', on_delete=models.PROTECT, verbose_name='کالا')
+    price = models.IntegerField(default=0)
+    tedad = models.IntegerField(default=0)
+    price_all = models.BigIntegerField(default=0)
     create_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
     update_at = models.DateTimeField('تاریخ ویرایش', auto_now=True)
     # create_at = models.DateTimeField(default=timezone.now)
