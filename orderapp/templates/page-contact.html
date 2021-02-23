@@ -34,17 +34,17 @@
 
 <!-- preloader
     ================================================== -->
-    <div id="preloader">
-        <div id="loader" class="dots-fade">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+<div id="preloader">
+    <div id="loader" class="dots-fade">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
+</div>
 
 
-    <!-- header
-    ================================================== -->
+<!-- header
+================================================== -->
 <header class="s-header header">
 
     <div class="header__logo">
@@ -58,15 +58,15 @@
 
         <h2 class="header__nav-heading h6">هدایت به</h2>
 
-        <ul class="header__nav">
-            <li><a href="page-contact.html" title="">تماس</a></li>
-            <li><a href="page-about.html" title="">درباره</a></li>
-            <li>
-                <a href="#0" title="">دسته بندی</a>
-            </li>
+    <ul class="header__nav">
+                <li><a href="{% url 'contact' %}" title="">تماس</a></li>
+                <li><a href="{% url 'aboutme' %}" title="">درباره</a></li>
+                <li>
+                    <a href="{% url 'category' %}" title="">دسته بندی</a>
+                </li>
 
-            <li class="current"><a href="index.html" title="">خانه</a></li>
-        </ul> <!-- end header__nav -->
+              <li class="current"><a href="{% url 'index' %}" title="">خانه</a></li>
+            </ul> <!-- end header__nav -->
 
         <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">بستن</a>
 
@@ -77,70 +77,71 @@
 
 <!-- s-content
 ================================================== -->
-    <section class="s-content s-content--top-padding s-content--narrow">
+<section class="s-content s-content--top-padding s-content--narrow">
 
-        <div class="row narrow">
-            <div class="col-full s-content__header">
-                <h1 class="display-1 display-1--with-line-sep">با ما در تماس باشید</h1>
-                <p class="lead">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای</p>
-            </div>
+    <div class="row narrow">
+        <div class="col-full s-content__header">
+            <h1 class="display-1 display-1--with-line-sep">با ما در تماس باشید</h1>
+            <p class="lead">
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و
+                متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                کاربردهای</p>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-full s-content__main">
-                <p>
+    <div class="row">
+        <div class="col-full s-content__main">
+            <p>
                 <img src="/static/images/thumbs/contact/contact-1000.jpg"
                      srcset="/static/images/thumbs/contact/contact-2000.jpg 2000w,
                              /static/images/thumbs/contact/contact-1000.jpg 1000w,
                              /static/images/thumbs/contact/contact-500.jpg 500w"
                      sizes="(max-width: 2000px) 100vw, 2000px" alt="">
-                </p>
+            </p>
 
-                <h2 style="text-align: right">سلام</h2>
+            <h2 style="text-align: right">سلام</h2>
 
-                <p>
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
+            <p>
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و
+                متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
 
-                <p>
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-                </p>
+            <p>
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و
+                متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
+            </p>
 
 
+            <div class="row">
+                <div class="col-six tab-full">
+                    <h4 style="text-align: right;">ادرس ما</h4>
 
-                <div class="row">
-                    <div class="col-six tab-full">
-                        <h4 style="text-align: right;">ادرس ما</h4>
-
-                        <p>
+                    <p>
                         1600 Amphitheatre Parkway<br>
                         Mountain View, CA<br>
                         94043 US
-                        </p>
+                    </p>
 
-                    </div>
-
-                    <div class="col-six tab-full">
-                        <h4 style="text-align: right">اطلاعات تماس</h4>
-
-                        <p>sayhello@wordsmith.com<br>
-                        info@wordsmith.com <br>
-                        Phone: (+1) 123 456
-                        </p>
-
-                    </div>
                 </div>
 
-            </div> <!-- s-content__main -->
-        </div> <!-- end row -->
+                <div class="col-six tab-full">
+                    <h4 style="text-align: right">اطلاعات تماس</h4>
 
-    </section> <!-- end s-content -->
+                    <p>sayhello@wordsmith.com<br>
+                        info@wordsmith.com <br>
+                        Phone: (+1) 123 456
+                    </p>
+
+                </div>
+            </div>
+
+        </div> <!-- s-content__main -->
+    </div> <!-- end row -->
+
+</section> <!-- end s-content -->
 
 
-
-
-    <!-- s-footer
-    ================================================== -->
+<!-- s-footer
+================================================== -->
 <footer class="s-footer">
 
     <div class="s-footer__main">
@@ -150,7 +151,13 @@
 
                 <h4>درباره BLOGPY</h4>
 
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
 
             </div> <!-- end s-footer__about -->
 
@@ -158,12 +165,15 @@
 
                 <h4>لورم ایپسوم</h4>
 
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای.</p>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و
+                    متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای.</p>
 
                 <div class="subscribe-form">
                     <form id="mc-form" class="group" novalidate="true">
 
-                        <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                        <input type="email" value="" name="EMAIL" class="email" id="mc-email"
+                               placeholder="Email Address" required="">
 
                         <input type="submit" name="subscribe" value="ارسال">
 
@@ -203,7 +213,9 @@
             <div class="col-six">
                 <div class="s-footer__copyright">
                         <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
+                                    class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                                                                      target="_blank">Colorlib</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </span>
                 </div>
@@ -219,13 +231,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </footer> <!-- end s-footer -->
 
 
-
 <!-- Java Script
 ================================================== -->
-    <script src="/static/js/jquery-3.2.1.min.js"></script>
-    <script src="/static/js/plugins.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="/static/js/main.js"></script>
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/plugins.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="/static/js/main.js"></script>
 
 </body>
 

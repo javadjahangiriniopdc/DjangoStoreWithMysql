@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 
 # Create your views here.
@@ -8,20 +8,13 @@ from django.http import HttpResponse
 
 class IndexPage(TemplateView):
     def get(self, request, *args, **kwargs):
-        product_data = []
         all_product = Product.objects.all().order_by('-create_at')[:9]
-        for product in all_product:
-            product_data.append({
-                'title': product.title,
-                'cover': product.cover.url,
-                'price': product.price,
-                'description': product.description,
-                'create_at': product.create_at.date()
-            })
+
         promote_data = []
         all_promote_product = Product.objects.filter(promote=True)
         for promote_product in all_promote_product:
             promote_data.append({
+                'id': promote_product.id,
                 'title': promote_product.title,
                 'cover': promote_product.cover.url,
                 'price': promote_product.price,
@@ -29,7 +22,7 @@ class IndexPage(TemplateView):
                 'create_at': promote_product.create_at.date()
             })
         context = {
-            'product_data': product_data,
+            'product_data': all_product,
             'promote_data': promote_data,
         }
         print(context)
@@ -38,6 +31,14 @@ class IndexPage(TemplateView):
 
 class ContactPage(TemplateView):
     template_name = 'page-contact.html'
+
+
+class AboutMe(TemplateView):
+    template_name = 'page-about.html'
+
+
+class Category(TemplateView):
+    template_name = 'category.html'
 
 
 def CustomerList(request):
@@ -88,3 +89,30 @@ def product_list_test(request):
     </html>
     """.format('</br>'.join('<li>{}</li>'.format(product) for product in products))
     return HttpResponse(response_text)
+
+
+def CustomerDetials(request, customerid):
+    # customer=Customer.objects.get(pk=customerid)
+    # customer = get_object_or_404(Customer, pk=customerid)
+    # return HttpResponse(customer)
+
+    customer = get_object_or_404(Customer, pk=customerid)
+    context = {
+        'customer': customer,
+    }
+    return render(request, 'orderapp/customer_details.html', context)
+
+
+def productDetials(request, productid):
+    # product = get_object_or_404(Product, pk=productid)
+    # return HttpResponse(product)
+    product = get_object_or_404(Product, pk=productid)
+    context = {
+        'product': product,
+    }
+    return render(request, 'product_details.html', context)
+
+
+def orderDetials(request, orderid):
+    ordeapp = get_object_or_404(OrderApp, pk=orderid)
+    return HttpResponse(ordeapp)

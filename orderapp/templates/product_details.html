@@ -6,7 +6,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Blogpy</title>
+    <title>Standard Post - Blogpy</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -49,17 +49,17 @@
     <header class="s-header header">
 
         <div class="header__logo">
-            <a class="logo" href="{% url 'index' %}">
+            <a class="logo" href="index.html">
                 BLOGPY
             </a>
-
         </div> <!-- end header__logo -->
+
         <a class="header__toggle-menu" href="#0" title="Menu"><span>منو</span></a>
         <nav class="header__nav-wrap">
 
             <h2 class="header__nav-heading h6">هدایت به</h2>
 
-            <ul class="header__nav">
+           <ul class="header__nav">
                 <li><a href="{% url 'contact' %}" title="">تماس</a></li>
                 <li><a href="{% url 'aboutme' %}" title="">درباره</a></li>
                 <li>
@@ -76,98 +76,49 @@
     </header> <!-- s-header -->
 
 
-    <!-- featured
-    ================================================== -->
-    <section class="s-featured">
-        <div class="row">
-            <div class="col-full">
-
-                <div class="featured-slider featured" data-aos="zoom-in">
-                {% for promote_product in promote_data %}
-                    <div class="featured__slide">
-                        <div class="entry">
-
-                            <div class="entry__background" style="background-image:url('{{ promote_product.cover }}');"></div>
-
-                            <div class="entry__content">
-                                <span class="entry__category"><a href="#0">{{ promote_product.description }}</a></span>
-
-                                <h1><a href="{% url 'productDetials' productid=promote_product.id %}" title="">{{ promote_product.title }}</a></h1>
-
-                                <div class="entry__info">
-                                    <a href="#0" class="entry__profile-pic">
-                                        <img class="avatar" src="{{ promote_product.cover }}" alt="">
-                                    </a>
-                                    <ul class="entry__meta">
-                                        <li><a href="#0">{{ promote_product.price }}</a></li>
-                                        <li>{{ promote_product.create_at }}</li>
-                                    </ul>
-                                </div>
-                            </div> <!-- end entry__content -->
-
-                        </div> <!-- end entry -->
-                    </div> <!-- end featured__slide -->
-
-                {% endfor %}
-                </div> <!-- end featured -->
-
-            </div> <!-- end col-full -->
-        </div>
-    </section> <!-- end s-featured -->
-
-
     <!-- s-content
     ================================================== -->
-    <section class="s-content">
+    <section class="s-content s-content--top-padding s-content--narrow">
 
-        <div class="row entries-wrap wide">
-            <div class="entries">
-            {% for product in product_data %}
-                <article class="col-block">
+        <article class="row entry format-standard">
 
-                    <div class="item-entry" data-aos="zoom-in">
-                        <div class="item-entry__thumb">
-                            <a href="single-standard.html" class="item-entry__thumb-link">
-                                <img src="{{ product.cover }}" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="{% url 'productDetials' productid=product.id %}">{{ product.title }}</a>
-                            </div>
-
-                            <h1 class="item-entry__title"><a href="single-standard.html">{{ product.price }}</a></h1>
-
-                            <div class="item-entry__date">
-                                <a href="single-standard.html">{{ product.create_at }}</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-
-                </article> <!-- end article -->
-
-            {% endfor %}
-            </div> <!-- end entries -->
-        </div> <!-- end entries-wrap -->
-
-        <div class="row pagination-wrap">
-            <div class="col-full">
-                <nav class="pgn" data-aos="fade-up">
-                    <ul>
-                        <li><a class="pgn__prev" href="#0">قبل</a></li>
-                        <li><a class="pgn__num" href="#0">۱</a></li>
-                        <li><span class="pgn__num current">۲</span></li>
-                        <li><a class="pgn__num" href="#0">۳</a></li>
-                        <li><a class="pgn__num" href="#0">۴</a></li>
-                        <li><a class="pgn__num" href="#0">۵</a></li>
-                        <li><span class="pgn__num dots">…</span></li>
-                        <li><a class="pgn__num" href="#0">۸</a></li>
-                        <li><a class="pgn__next" href="#0">بعد</a></li>
-                    </ul>
-                </nav>
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img src="{{ product.cover.url }}"
+                         srcset="{{ product.cover.url }} 2000w,
+                                 {{ product.cover.url }} 1000w,
+                                 {{ product.cover.url }} 500w"
+                         sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                </div>
             </div>
-        </div>
+
+            <div class="entry__header col-full">
+                <h1 class="entry__header-title display-1">
+                   {{ product.title }}
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">{{ product.create_at }}</li>
+                    <li class="byline">
+                        By
+                        <a href="#0">Jonathan Doe</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <p class="lead drop-cap">{{ product.description }}</p>
+
+            <p>
+                <img src="{{ product.cover.url }}" srcset="images/wheel-2000.jpg 2000w, images/wheel-1000.jpg 1000w, images/wheel-500.jpg 500w" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+            </p>
+
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+
 
     </section> <!-- end s-content -->
 
@@ -256,7 +207,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Java Script
     ================================================== -->
     <script src="/static/js/jquery-3.2.1.min.js"></script>
-    <script src="/static/js/plugins.js"></script>
+    <script src=/static/js/plugins.js"></script>
     <script src="/static/js/main.js"></script>
 
 </body>
