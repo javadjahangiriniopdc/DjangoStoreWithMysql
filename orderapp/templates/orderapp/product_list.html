@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>فهرست مشتریان</title>
+    <link rel="stylesheet" type="text/css" href="{% static "orderapp/css/bootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "orderapp/css/font-awesome.css.css" %}">
     <link rel="stylesheet" type="text/css" href="/static/orderapp/css/main.css">
 </head>
 <body>
@@ -32,6 +35,9 @@
 
     {% endif %}
 </ul>
+<script src=" {% static "orderapp/js/jquery-3.4.0.min.js" %}"></script>
+<script src=" {% static "orderapp/js/bootstrap.bundle.js" %}"></script>
+<script src=" {% static "orderapp/js/font-awesome.js" %}"></script>
 <script src="/static/orderapp/js/main.js"></script>
 </body>
 </html>
