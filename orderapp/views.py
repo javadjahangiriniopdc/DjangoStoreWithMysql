@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # Create your views here.
-from orderapp.models import Product
+from orderapp.models import *
+from django.http import HttpResponse
 
 
 class IndexPage(TemplateView):
@@ -37,3 +38,53 @@ class IndexPage(TemplateView):
 
 class ContactPage(TemplateView):
     template_name = 'page-contact.html'
+
+
+def CustomerList(request):
+    customers = Customer.objects.all()
+    count = len(customers)
+    context = {
+        'customer_list': customers,
+        'customer_count': count,
+    }
+    return render(request, 'orderapp/customer_list.html', context)
+
+
+def ProductList(request):
+    products = Product.objects.all()
+    count = len(products)
+    context = {
+        'products': products,
+        'products_count': count,
+    }
+    return render(request, 'orderapp/product_list.html', context)
+
+
+def CustomerListTest(request):
+    customers = Customer.objects.all()
+    response_text = '<br/>'.join('{} : {}'.format(i, customer) for i, customer in enumerate(customers, start=1))
+    return HttpResponse(response_text)
+    # return HttpResponse(customers)
+    # return HttpResponse('salam')
+
+
+def product_list_test(request):
+    products = Product.objects.all()
+    response_text = """
+    <!DOCTYPE html>
+
+    <html lang="fa-ir" dir="rtl">
+     <head>
+        <title>لیست محصولات</title>
+     </head>
+    <body>
+        <h1>لیست محصولات</h1>
+        <h1>
+            <ul>
+              {}
+            </ul>
+        </h1>
+    </body>
+    </html>
+    """.format('</br>'.join('<li>{}</li>'.format(product) for product in products))
+    return HttpResponse(response_text)

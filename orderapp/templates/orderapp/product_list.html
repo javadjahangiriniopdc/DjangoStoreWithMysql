@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>فهرست مشتریان</title>
+</head>
+<body>
+<h1>سامانه فروشگاه انلاین</h1>
+{#<a href="/customer/list/">برو به لیست مشتریان</a>#}
+<a href="{% url "orderapp:CustomerList" %}">برو به لیست مشتریان</a>
+<ul>
+
+    {#    <li>#}
+    {#        جواد جهانگیری#}
+    {#    </li>#}
+    {% if products %}
+         <p style="color: green">
+         تعداد محصولات:
+           {{ products_count }}
+         می باشد
+        </p>
+        {% for product in products %}
+            <li>
+                {{ product }}
+            </li>
+        {% endfor %}
+    {% else %}
+        <p style="color: red">
+            محصولی هنوز تعریف نشده است
+        </p>
+
+    {% endif %}
+</ul>
+</body>
+</html>
