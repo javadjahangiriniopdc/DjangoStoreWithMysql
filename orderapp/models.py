@@ -37,8 +37,8 @@ class Product(models.Model):
         verbose_name_plural = 'کالاها'
 
     title = models.CharField('عنوان', max_length=50, null=False, blank=False)
-    cover = models.FileField('عکس محصول', upload_to='product_cover', null=False, blank=False,
-                             validators=[validate_file_extension])
+    cover = models.FileField(default='temp.jpg', upload_to='product_cover', validators=[validate_file_extension],
+                             verbose_name='کاور کالا')
     price = models.IntegerField('قیمت', default=0)
     description = models.CharField('توضیحات', max_length=50, null=False, blank=False)
     create_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
