@@ -8,7 +8,7 @@ from django.http import HttpResponse
 
 class IndexPage(TemplateView):
     def get(self, request, *args, **kwargs):
-        all_product = Product.objects.all().order_by('-create_at')[:9]
+        all_product = Product.objects.all().filter(promote=False).order_by('-create_at')[:9]
 
         promote_data = []
         all_promote_product = Product.objects.filter(promote=True)

@@ -25,7 +25,7 @@ class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT, verbose_name='کاربر')
     avatar = models.FileField('عکس', upload_to='user_avatar', null=False, blank=False,
                               validators=[validate_file_extension])
-    description = models.CharField('توضیحات', max_length=512, null=False, blank=False)
+    description = RichTextField('توضیحات')
 
     def __str__(self):
         return self.user.first_name + '-' + self.user.last_name
@@ -40,7 +40,7 @@ class Product(models.Model):
     cover = models.FileField(default='temp.jpg', upload_to='product_cover', validators=[validate_file_extension],
                              verbose_name='کاور کالا')
     price = models.IntegerField('قیمت', default=0)
-    description = models.CharField('توضیحات', max_length=50, null=False, blank=False)
+    description = RichTextField('توضیحات')
     create_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
     update_at = models.DateTimeField('تاریخ ویرایش', auto_now=True)
     # create_at = models.DateTimeField(default=timezone.now)
