@@ -57,24 +57,8 @@
         </a>
 
     </div> <!-- end header__logo -->
-    <a class="header__toggle-menu" href="#0" title="Menu"><span>منو</span></a>
-    <nav class="header__nav-wrap">
 
-        <h2 class="header__nav-heading h6">هدایت به</h2>
-
-        <ul class="header__nav">
-            <li><a href="{% url 'contact' %}" title="">تماس</a></li>
-            <li><a href="{% url 'aboutme' %}" title="">درباره</a></li>
-            <li>
-                <a href="{% url 'category' %}" title="">دسته بندی</a>
-            </li>
-
-            <li class="current"><a href="{% url 'index' %}" title="">خانه</a></li>
-        </ul> <!-- end header__nav -->
-
-        <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">بستن</a>
-
-    </nav> <!-- end header__nav-wrap -->
+{% include "_menu.html" %}
 
 </header> <!-- s-header -->
 

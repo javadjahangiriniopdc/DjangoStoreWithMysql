@@ -1,9 +1,10 @@
-{% extends "basepage.html" %}
+{% extends "_basepage.html" %}
 {% block title %}
 مجتمع فنی ارومیه
 {% endblock %}
 {% block toolbar_title %}
-            مجتمع فنی ارومیه
+    {{ block.super }} -
+    صفحه اصلی
 {% endblock %}
 
 {% block main_content %}
