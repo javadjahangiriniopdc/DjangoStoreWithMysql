@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from django.views.generic import TemplateView
 
 # Create your views here.
 from orderapp.models import *
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 class IndexPage(TemplateView):
@@ -25,7 +27,7 @@ class IndexPage(TemplateView):
             'product_data': all_product,
             'promote_data': promote_data,
         }
-        print(context)
+        # print(context)
         return render(request, 'index.html', context)
 
 
@@ -36,9 +38,9 @@ class ContactPage(TemplateView):
 class AboutMe(TemplateView):
     template_name = 'page-about.html'
 
-
+@login_required
 def Category(request):
-    if request.user.is_authenticated and request.user.is_active:
+    # if request.user.is_authenticated and request.user.is_active:
         ordersapp = OrderApp.objects.all()
         count = len(ordersapp)
         context = {
@@ -46,8 +48,9 @@ def Category(request):
             'ordersapp_count': count,
         }
         return render(request, 'category.html', context)
-    else:
-        return HttpResponse('اول وارد شوید')
+    # else:
+    #     # return HttpResponse('اول وارد شوید')
+    #     return HttpResponseRedirect(reverse('accounts:login') + '?next=/orderapp/category/')
 
 
 def CustomerList(request):

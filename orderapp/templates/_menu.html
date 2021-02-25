@@ -5,6 +5,11 @@
         <h2 class="header__nav-heading h6">هدایت به</h2>
 
         <ul class="header__nav">
+            {%  if request.user.is_authenticated and request.user.is_active %}
+             <li><a href="{% url 'accounts:logout' %}" title="">خروج کاربر</a></li>
+                {% else %}
+             <li><a href="{% url 'accounts:login' %}" title="">ورود کاربر</a></li>
+            {% endif %}
             <li><a href="{% url 'contact' %}" title="">تماس</a></li>
             <li><a href="{% url 'aboutme' %}" title="">درباره</a></li>
             <li>
