@@ -38,13 +38,16 @@ class AboutMe(TemplateView):
 
 
 def Category(request):
-    ordersapp = OrderApp.objects.all()
-    count = len(ordersapp)
-    context = {
-        'ordersapp_list': ordersapp,
-        'ordersapp_count': count,
-    }
-    return render(request, 'category.html', context)
+    if request.user.is_authenticated and request.user.is_active:
+        ordersapp = OrderApp.objects.all()
+        count = len(ordersapp)
+        context = {
+            'ordersapp_list': ordersapp,
+            'ordersapp_count': count,
+        }
+        return render(request, 'category.html', context)
+    else:
+        return HttpResponse('اول وارد شوید')
 
 
 def CustomerList(request):
