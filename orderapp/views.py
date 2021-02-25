@@ -37,8 +37,14 @@ class AboutMe(TemplateView):
     template_name = 'page-about.html'
 
 
-class Category(TemplateView):
-    template_name = 'category.html'
+def Category(request):
+    ordersapp = OrderApp.objects.all()
+    count = len(ordersapp)
+    context = {
+        'ordersapp_list': ordersapp,
+        'ordersapp_count': count,
+    }
+    return render(request, 'category.html', context)
 
 
 def CustomerList(request):
