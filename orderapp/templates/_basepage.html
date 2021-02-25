@@ -51,16 +51,17 @@
 <header class="s-header header">
 
     <div class="header__logo">
-{#    این قسمت برای تنظیم مقدار پیش فرض در بلاک ها می باشد#}
+        {#    این قسمت برای تنظیم مقدار پیش فرض در بلاک ها می باشد#}
         <a class="logo" href="{% url 'index' %}">
             {% block toolbar_title %}  مجتمع فنی ارومیه{% endblock %}
         </a>
 
     </div> <!-- end header__logo -->
 
-{% include "_menu.html" %}
+    {% include "_menu.html" %}
 
 </header> <!-- s-header -->
+
 
 
 {% block main_content %} {% endblock %}
@@ -71,10 +72,12 @@
 <footer class="s-footer">
 
     <div class="s-footer__main">
+
         <div class="row">
 
             <div class="col-six tab-full s-footer__about">
 
+                {% include "_promote.html" with company='شرکت فناوری اطلاعات و ارتباطات بهار' color='success' %}
                 <h4>درباره مجتمع فنی ارومیه</h4>
 
                 <p>با افزایش سرعت تغییرات در تکنولوژی، نیاز به مهارت داشتن در تکنولوژی برای مولد بودن، بهینه‌سازی کردن،
@@ -99,7 +102,7 @@
             </div> <!-- end s-footer__about -->
 
             <div class="col-six tab-full s-footer__subscribe">
-
+                {% include "_promote.html" with company='شرکت فناوری اطلاعات و ارتباطات بهار' %}
                 <h4>دپارتمان فناوری مجتمع فنی ارومیه</h4>
 
                 <p>ارایه دهنده دوره هایت تخصصی شبکه و برنامه نویسی و طراحی سایت</p>
