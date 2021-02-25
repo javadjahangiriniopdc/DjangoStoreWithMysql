@@ -23,7 +23,7 @@ class Customer(models.Model):
         verbose_name_plural = 'مشتریان'
 
     user = models.OneToOneField(User, on_delete=models.PROTECT, verbose_name='کاربر')
-    avatar = models.FileField('عکس', upload_to='user_avatar', null=False, blank=False,
+    avatar = models.FileField('عکس', upload_to='user_avatar', null=True, blank=True,
                               validators=[validate_file_extension])
     description = RichTextField('توضیحات')
 
@@ -37,8 +37,8 @@ class Product(models.Model):
         verbose_name_plural = 'کالاها'
 
     title = models.CharField('عنوان', max_length=50, null=False, blank=False)
-    cover = models.FileField(default='temp.jpg', upload_to='product_cover', validators=[validate_file_extension],
-                             verbose_name='کاور کالا')
+    cover = models.FileField(upload_to='product_cover', validators=[validate_file_extension],
+                             verbose_name='کاور کالا', null=True, blank=True)
     price = models.IntegerField('قیمت', default=0)
     description = RichTextField('توضیحات')
     create_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
