@@ -42,7 +42,7 @@
                                 <h1 class="item-entry__title"><a href="single-standard.html">  {{ ordersapp.title }}  </a></h1>
 
                                 <div class="item-entry__date">
-                                    <a href="single-standard.html">{{ ordersapp.create_at }}</a>
+                                    <a href="single-standard.html">{{ ordersapp.create_at | date:"l n/j ساعت H:i" }}</a>
                                 </div>
                             </div>
                         </div> <!-- item-entry -->
