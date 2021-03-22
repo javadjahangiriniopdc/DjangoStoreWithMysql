@@ -1,0 +1,15 @@
+python -m venv venv
+cd venv
+cd scripts
+active
+pip install -r requirements.txt
+createsuperuser
+----------------------------------------
+Django Server Config
+PYTHONUNBUFFERED=1;DJANGO_SETTINGS_MODULE=store.settings
+------------------------------------------
+Ctrl+Alt+R
+python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 2 --output dump.json
+python manage.py migrate
+python manage.py loaddata dump.json
+----------------------------------------
