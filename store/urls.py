@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('orderapp.urls')),
     path('orderapp/', include('orderapp.urls')),
     path('accounts/', include('accounts.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 
 ]

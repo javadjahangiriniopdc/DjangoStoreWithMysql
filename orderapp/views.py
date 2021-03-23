@@ -4,6 +4,10 @@ from django.urls import reverse
 from django.views.generic import TemplateView
 
 # Create your views here.
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from orderapp.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -38,19 +42,22 @@ class ContactPage(TemplateView):
 class AboutMe(TemplateView):
     template_name = 'page-about.html'
 
+
 @login_required
 def Category(request):
     # if request.user.is_authenticated and request.user.is_active:
-        ordersapp = OrderApp.objects.all()
-        count = len(ordersapp)
-        context = {
-            'ordersapp_list': ordersapp,
-            'ordersapp_count': count,
-        }
-        return render(request, 'category.html', context)
-    # else:
-    #     # return HttpResponse('اول وارد شوید')
-    #     return HttpResponseRedirect(reverse('accounts:login') + '?next=/orderapp/category/')
+    ordersapp = OrderApp.objects.all()
+    count = len(ordersapp)
+    context = {
+        'ordersapp_list': ordersapp,
+        'ordersapp_count': count,
+    }
+    return render(request, 'category.html', context)
+
+
+# else:
+#     # return HttpResponse('اول وارد شوید')
+#     return HttpResponseRedirect(reverse('accounts:login') + '?next=/orderapp/category/')
 
 
 def CustomerList(request):
@@ -128,3 +135,19 @@ def productDetials(request, productid):
 def orderDetials(request, orderid):
     ordeapp = get_object_or_404(OrderApp, pk=orderid)
     return HttpResponse(ordeapp)
+
+
+class AllCustomerView(APIView):
+    def get(self, request, format=None):
+        try:
+            all_customer = Customer.objects.all()
+            data = []
+            for customer in all_customer:
+                data.append({
+                    'name': customer.user.username,
+                })
+
+            return Response({'data': data}, status=status.HTTP_200_OK)
+        except:
+            return Response({'status': "Internal Server Error,we'll check It later"},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)

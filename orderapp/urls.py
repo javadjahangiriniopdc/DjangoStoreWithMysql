@@ -2,7 +2,6 @@ from django.conf.urls import url
 from django.urls import path
 from django.conf import settings
 
-
 from . import views
 
 # app_name = "orderapp"
@@ -23,9 +22,11 @@ urlpatterns = [
     path('product/details/<int:productid>/', views.productDetials, name='productDetials'),
     path('orderapp/details/<int:orderid>/', views.orderDetials, name='orderDetials'),
     # path('customer/list', views.CustomerList.as_view(), name='CustomerList'),
+    path('customer/all/', views.AllCustomerView.as_view(), name='all_customer')
+
 ]
 
 if settings.DEBUG:
     from django.conf.urls.static import static
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
