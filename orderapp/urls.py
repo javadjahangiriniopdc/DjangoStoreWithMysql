@@ -22,8 +22,8 @@ urlpatterns = [
     path('product/details/<int:productid>/', views.productDetials, name='productDetials'),
     path('orderapp/details/<int:orderid>/', views.orderDetials, name='orderDetials'),
     # path('customer/list', views.CustomerList.as_view(), name='CustomerList'),
-    path('customer/all/', views.AllCustomerView.as_view(), name='all_customer')
-
+    path('customer/all/', views.AllCustomerView.as_view(), name='all_customer'),
+    path('customer/', views.SingleCustomerAPIView.as_view(), name='single_customer'),
 ]
 
 if settings.DEBUG:

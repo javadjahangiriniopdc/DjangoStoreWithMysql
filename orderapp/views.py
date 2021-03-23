@@ -8,6 +8,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from orderapp import serializers
 from orderapp.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -144,10 +145,29 @@ class AllCustomerView(APIView):
             data = []
             for customer in all_customer:
                 data.append({
-                    'name': customer.user.username,
+                    'username': customer.user.username,
+                    'description': customer.description,
+                    'avatar': customer.avatar.url,
+                    'name': customer.user.first_name,
+                    'family': customer.user.last_name,
+                    'email': customer.user.email,
+
                 })
 
             return Response({'data': data}, status=status.HTTP_200_OK)
         except:
             return Response({'status': "Internal Server Error,we'll check It later"},
                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class SingleCustomerAPIView(APIView):
+    def get(self, request, format=None):
+        try:
+            customer_username = request.GET['customer_username']
+            customer = Customer.objects.filter(user__username=customer_username)
+            serialized_data = serializers.SingleCustomerserializer(customer, many=True)
+            data = serialized_data.data
+            return Response({'data': data}, status=status.HTTP_200_OK)
+
+        except:
+            pass
