@@ -16,7 +16,6 @@ from orderapp.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 
 
-
 class IndexPage(TemplateView):
     def get(self, request, *args, **kwargs):
         all_product = Product.objects.all().filter(promote=False).order_by('-create_at')[:9]
@@ -202,3 +201,13 @@ def get_customer(request, pk):
     customer = Customer.objects.get(pk=pk)
     user_ser = serializers.Customerserializer(customer)
     return Response(user_ser.data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def create_customer(request):
+    serializer = serializers.CreateCustomerSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=ValueError):
+        serializer.create(validated_data=request.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.error_messages,
+                    status=status.HTTP_400_BAD_REQUEST)

@@ -1,6 +1,7 @@
 from datetime import datetime
 
 import django
+from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
@@ -70,3 +71,26 @@ class OrderApp(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserManager(BaseUserManager):
+
+    def create_user(self, first_name, last_name, sex, show_cell_phone, user_name, email, cell_phone, expired, is_admin,
+                    password=None):
+        """
+            Creates and saves a User with the given email, phone and password.
+        """
+        if not user_name:
+            raise ValueError('user must have username')
+        if not email:
+            raise ValueError('user must have email')
+
+        user = self.model(
+            user_name=user_name,
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user

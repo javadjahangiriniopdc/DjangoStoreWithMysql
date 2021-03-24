@@ -29,6 +29,8 @@ urlpatterns = [
     path('customer/search/', views.SearchCustomerAPIView.as_view(), name='search_customer'),
     path('customers/', views.get_customers),
     path('customer/<int:pk>', views.get_customer),
+    path('createcustomer/', views.create_customer),
+    # path('updatecustomer/', views.update_customer),
 
 ]
 
