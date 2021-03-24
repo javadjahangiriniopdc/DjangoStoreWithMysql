@@ -15,7 +15,7 @@ from orderapp import serializers
 from orderapp.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .serializers import *
+
 
 class IndexPage(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -200,5 +200,5 @@ def get_customers(request):
 @api_view(['GET'])
 def get_customer(request, pk):
     customer = Customer.objects.get(pk=pk)
-    user_ser = Customerserializer(customer)
+    user_ser = serializers.Customerserializer(customer)
     return Response(user_ser.data, status=status.HTTP_200_OK)

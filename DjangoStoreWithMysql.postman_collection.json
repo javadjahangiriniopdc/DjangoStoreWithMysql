@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "ccb2e074-ac3a-4213-a8f0-a8dcd71714e8",
+		"name": "DjangoStoreWithMysql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllCustomerNoSerializer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/customer/all/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"customer",
+						"all",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Customer with username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/orderapp/customer/?customer_username=admin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"orderapp",
+						"customer",
+						""
+					],
+					"query": [
+						{
+							"key": "customer_username",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search in customer description",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/orderapp/customer/search/?customer_description=جواد",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"orderapp",
+						"customer",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "customer_description",
+							"value": "جواد"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/orderapp/customers/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"orderapp",
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

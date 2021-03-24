@@ -29,7 +29,7 @@ urlpatterns = [
     path('customer/search/', views.SearchCustomerAPIView.as_view(), name='search_customer'),
     path('customers/', views.get_customers),
     path('customer/<int:pk>', views.get_customer),
-    path('create-user/', views.create_user),
+
 ]
 
 if settings.DEBUG:
