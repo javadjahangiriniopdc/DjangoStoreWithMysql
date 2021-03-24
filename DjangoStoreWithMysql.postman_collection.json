@@ -110,6 +110,39 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "createcustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\":{\r\n        \"username\":\"drjj007\",\r\n        \"first_name\":\"javad\",\r\n        \"last_name\":\"jahangiri\",\r\n        \"email\":\"javad.jahangiri.niopdc@gmail.com\"\r\n    },\r\n    \"description\":\"this is test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/orderapp/createcustomer/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"orderapp",
+						"createcustomer",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
