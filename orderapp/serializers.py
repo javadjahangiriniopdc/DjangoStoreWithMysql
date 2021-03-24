@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SingleCustomerserializer(serializers.ModelSerializer):
+class Customerserializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
 
     class Meta:

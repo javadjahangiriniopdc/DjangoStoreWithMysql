@@ -12,9 +12,31 @@ Ctrl+Alt+R
 python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 2 --output dump.json
 python manage.py migrate
 python manage.py loaddata dump.json
-----------------------------------------
+-----------------------------------------------------------------
+need urls for test api
 http://localhost:8000/api-auth/login/
-http://localhost:8000/customer/all/
-https://www.django-rest-framework.org/tutorial/1-serialization/
-http://127.0.0.1:8000/orderapp/customer/?customer_username=admin
 
+    #path('customer/all/', views.AllCustomerView.as_view(), name='all_customer'),
+    http://localhost:8000/customer/all/
+
+
+    path('customer/', views.SingleCustomerAPIView.as_view(), name='single_customer'),
+    http://127.0.0.1:8000/orderapp/customer/?customer_username=admin
+
+
+    path('customer/search/', views.SearchArticleAPIView.as_view(), name='search_customer'),
+    http://127.0.0.1:8000/orderapp/customer/search/?customer_description=جواد
+
+
+    path('customers/', views.get_customers),
+    http://127.0.0.1:8000/orderapp/customers/
+
+
+    path('customer/<int:pk>', views.get_customer),
+    http://127.0.0.1:8000/orderapp/customer/1
+
+
+
+
+
+------------------------------------------------------------------

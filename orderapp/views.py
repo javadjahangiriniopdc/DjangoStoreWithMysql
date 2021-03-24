@@ -1,10 +1,13 @@
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView
 
 # Create your views here.
 from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -12,6 +15,7 @@ from orderapp import serializers
 from orderapp.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 
+from .serializers import *
 
 class IndexPage(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -164,10 +168,37 @@ class SingleCustomerAPIView(APIView):
     def get(self, request, format=None):
         try:
             customer_username = request.GET['customer_username']
-            customer = Customer.objects.filter(user__username=customer_username)
-            serialized_data = serializers.SingleCustomerserializer(customer, many=True)
+            customer = Customer.objects.get(user__username=customer_username)
+            serialized_data = serializers.Customerserializer(customer)
             data = serialized_data.data
             return Response({'data': data}, status=status.HTTP_200_OK)
 
         except:
             pass
+
+
+class SearchCustomerAPIView(APIView):
+    def get(self, request, format=None):
+        try:
+            customer_description = request.GET['customer_description']
+            customers = Customer.objects.filter(description__contains=customer_description)
+            serialized_data = serializers.Customerserializer(customers, many=True)
+            data = serialized_data.data
+            return Response({'data': data}, status=status.HTTP_200_OK)
+
+        except:
+            pass
+
+
+@api_view(['GET'])
+def get_customers(request):
+    customers = Customer.objects.all()
+    permission_ser = serializers.Customerserializer(customers, many=True)
+    return Response(permission_ser.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def get_customer(request, pk):
+    customer = Customer.objects.get(pk=pk)
+    user_ser = Customerserializer(customer)
+    return Response(user_ser.data, status=status.HTTP_200_OK)

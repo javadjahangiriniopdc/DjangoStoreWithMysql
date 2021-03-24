@@ -22,8 +22,14 @@ urlpatterns = [
     path('product/details/<int:productid>/', views.productDetials, name='productDetials'),
     path('orderapp/details/<int:orderid>/', views.orderDetials, name='orderDetials'),
     # path('customer/list', views.CustomerList.as_view(), name='CustomerList'),
+
+    # web_api
     path('customer/all/', views.AllCustomerView.as_view(), name='all_customer'),
     path('customer/', views.SingleCustomerAPIView.as_view(), name='single_customer'),
+    path('customer/search/', views.SearchCustomerAPIView.as_view(), name='search_customer'),
+    path('customers/', views.get_customers),
+    path('customer/<int:pk>', views.get_customer),
+    path('create-user/', views.create_user),
 ]
 
 if settings.DEBUG:
